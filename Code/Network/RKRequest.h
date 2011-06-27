@@ -45,8 +45,11 @@ typedef enum {
     
     // Load from the cache if we have data stored
     RKRequestCachePolicyEnabled = 1 << 3,
+    
+    // Load from the cache if we are within the timeout window
+    RKRequestCachePolicyTimeout = 1 << 4,
 
-    RKRequestCachePolicyDefault = RKRequestCachePolicyEtag
+    RKRequestCachePolicyDefault = RKRequestCachePolicyEtag | RKRequestCachePolicyTimeout
 } RKRequestCachePolicy;
 
 /**
@@ -85,6 +88,7 @@ typedef enum RKRequestBackgroundPolicy {
     BOOL _forceBasicAuthentication;
     RKRequestBackgroundPolicy _backgroundPolicy;
     RKRequestCache* _cache;
+    NSTimeInterval _cacheTimeoutInterval;
     
     #if TARGET_OS_IPHONE
     UIBackgroundTaskIdentifier _backgroundTaskIdentifier;
@@ -168,6 +172,13 @@ typedef enum RKRequestBackgroundPolicy {
 
 @property (nonatomic, assign) RKRequestCachePolicy cachePolicy;
 @property (nonatomic, retain) RKRequestCache* cache;
+
+/**
+ * The timeout interval within which the request should not be sent
+ * and the cached response should be used. Used if the cache policy
+ * includes RKRequestCachePolicyTimeout
+ */
+@property (nonatomic, assign) NSTimeInterval cacheTimeoutInterval;
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
