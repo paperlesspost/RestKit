@@ -339,8 +339,8 @@ static const NSTimeInterval kFlushDelay = 0.3;
     if ([self containsRequest:request]) {
         RKLogTrace(@"Removing request %@ from queue %@", request, self);
         @synchronized(self) {
-            [_requests removeObject:request];
             request.queue = nil;
+            [_requests removeObject:request];
         }
 
         [[NSNotificationCenter defaultCenter] removeObserver:self name:RKRequestDidLoadResponseNotification object:request];
