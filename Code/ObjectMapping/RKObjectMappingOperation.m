@@ -61,6 +61,27 @@ BOOL RKObjectIsValueEqualToValue(id sourceValue, id destinationValue) {
     return ComparisonSender(sourceValue, comparisonSelector, destinationValue);
 }
 
+/**
+   This method ensures that attribute mappings apply cleanly to an `NSMutableDictionary` target class to support mapping to nested keyPaths. See issue #882
+ 
+ Backported from .20
+ https://github.com/RestKit/RestKit/commit/64e9c7cb6d04dd8750e9f663fc998bbe738945e9
+*/
+static void RKSetIntermediateDictionaryValuesOnObjectForKeyPath(id object, NSString *keyPath)
+{
+    if (! [object isKindOfClass:[NSMutableDictionary class]]) return;
+    
+    NSArray *keyPathComponents = [keyPath componentsSeparatedByString:@"."];
+    if ([keyPathComponents count] > 1) {
+        for (NSUInteger index = 0; index < [keyPathComponents count] - 1; index++) {
+            NSString *intermediateKeyPath = [[keyPathComponents subarrayWithRange:NSMakeRange(0, index + 1)] componentsJoinedByString:@"."];
+            if (! [object valueForKeyPath:intermediateKeyPath]) {
+                [object setValue:[NSMutableDictionary dictionary] forKeyPath:intermediateKeyPath];
+            }
+        }
+    }
+}
+
 @interface RKObjectMappingOperation ()
 @property (nonatomic, retain) NSDictionary *nestedAttributeSubstitution;
 @property (nonatomic, retain) NSError *validationError;
@@ -346,6 +367,8 @@ BOOL RKObjectIsValueEqualToValue(id sourceValue, id destinationValue) {
     if (type && NO == [[value class] isSubclassOfClass:type]) {
         value = [self transformValue:value atKeyPath:attributeMapping.sourceKeyPath toType:type];
     }
+    
+    RKSetIntermediateDictionaryValuesOnObjectForKeyPath(self.destinationObject, attributeMapping.destinationKeyPath);
 
     // Ensure that the value is different
     if ([self shouldSetValue:&value atKeyPath:attributeMapping.destinationKeyPath]) {
