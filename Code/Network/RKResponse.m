@@ -215,6 +215,7 @@ return __VA_ARGS__;                                                             
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
+	[_request retain];
     RKResponseIgnoreDelegateIfCancelled();
     RKLogDebug(@"NSHTTPURLResponse Status Code: %ld", (long)[response statusCode]);
     RKLogDebug(@"Headers: %@", [response allHeaderFields]);
@@ -223,6 +224,7 @@ return __VA_ARGS__;                                                             
     if ([[_request delegate] respondsToSelector:@selector(request:didReceiveResponse:)]) {
       [[_request delegate] request:_request didReceiveResponse:self];
     }
+	[_request release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
