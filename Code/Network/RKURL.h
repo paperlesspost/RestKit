@@ -128,14 +128,6 @@
 ///-----------------------------------------------------------------------------
 
 /**
- Returns the base URL of the receiver.
-
- The base URL includes everything up to the resource path, typically the portion
- that is repeated in every API call.
- */
-@property (nonatomic, copy, readonly) NSURL *baseURL;
-
-/**
  Returns the resource path of the receiver.
 
  The resource path is the path portion of the complete URL beyond that contained

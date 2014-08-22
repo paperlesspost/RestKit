@@ -26,7 +26,6 @@
 #import "RKLog.h"
 
 @interface RKURL ()
-@property (nonatomic, copy, readwrite) NSURL *baseURL;
 @property (nonatomic, copy, readwrite) NSString *resourcePath;
 @end
 
@@ -91,9 +90,8 @@
         return nil;
     }
 
-    self = [self initWithString:[completeURL absoluteString]];
+    self = [self initWithString:[completeURL absoluteString] relativeToURL:theBaseURL];
     if (self) {
-        self.baseURL = theBaseURL;
         self.resourcePath = theResourcePath;
     }
 
@@ -155,14 +153,14 @@
     return [self URLWithBaseURLString:URLString];
 }
 
-- (id)initWithString:(NSString *)URLString
-{
-    self = [super initWithString:URLString];
-    if (self) {
-        self.baseURL = self;
-    }
-
-    return self;
-}
+//- (id)initWithString:(NSString *)URLString
+//{
+//    self = [super initWithString:URLString];
+//    if (self) {
+//        self.baseURL = self;
+//    }
+//
+//    return self;
+//}
 
 @end
