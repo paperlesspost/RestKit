@@ -27,11 +27,11 @@
 
 @interface RKURL ()
 @property (nonatomic, copy, readwrite) NSString *resourcePath;
+@property (nonatomic, copy) NSString *internalBaseURL;
 @end
 
 @implementation RKURL
 
-@synthesize baseURL;
 @synthesize resourcePath;
 
 + (id)URLWithBaseURL:(NSURL *)baseURL
@@ -73,14 +73,14 @@
     NSMutableDictionary *mergedQueryParameters = [NSMutableDictionary dictionaryWithDictionary:[theBaseURL queryParameters]];
     [mergedQueryParameters addEntriesFromDictionary:resourcePathQueryParameters];
     [mergedQueryParameters addEntriesFromDictionary:theQueryParameters];
-
+    
     // Build the new URL path
     NSRange queryCharacterRange = [theResourcePath rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?"]];
     NSString *resourcePathWithoutQueryString = (queryCharacterRange.location == NSNotFound) ? theResourcePath : [theResourcePath substringToIndex:queryCharacterRange.location];
     NSString *baseURLPath = [[theBaseURL path] isEqualToString:@"/"] ? @"" : [[theBaseURL path] stringByStandardizingPath];
     NSString *completePath = resourcePathWithoutQueryString ? [baseURLPath stringByAppendingString:resourcePathWithoutQueryString] : baseURLPath;
     NSString *completePathWithQuery = [completePath stringByAppendingQueryParameters:mergedQueryParameters];
-
+    
     // NOTE: You can't safely use initWithString:relativeToURL: in a NSURL subclass, see http://www.openradar.me/9729706
     // So we unfortunately convert into an NSURL before going back into an NSString -> RKURL
     NSURL *completeURL = [NSURL URLWithString:completePathWithQuery relativeToURL:theBaseURL];
@@ -89,22 +89,29 @@
         [self release];
         return nil;
     }
-
-    self = [self initWithString:[completeURL absoluteString] relativeToURL:theBaseURL];
+    
+    self = [self initWithString:[completeURL absoluteString]];
     if (self) {
+        self.internalBaseURL = theBaseURL;
         self.resourcePath = theResourcePath;
     }
-
+    
     return self;
+}
+
+- (NSURL *)baseURL {
+    return self.internalBaseURL;
+}
+
+- (void)setBaseURL:(NSURL *)baseURL {
+    self.internalBaseURL = baseURL;
 }
 
 - (void)dealloc
 {
-    [baseURL release];
-    baseURL = nil;
     [resourcePath release];
     resourcePath = nil;
-
+    
     [super dealloc];
 }
 
@@ -133,7 +140,7 @@
 
 - (RKURL *)URLByReplacingResourcePath:(NSString *)newResourcePath
 {
-    return [RKURL URLWithBaseURL:self.baseURL resourcePath:newResourcePath];
+    return [RKURL URLWithBaseURL:self.internalBaseURL resourcePath:newResourcePath];
 }
 
 - (RKURL *)URLByInterpolatingResourcePathWithObject:(id)object
@@ -153,14 +160,14 @@
     return [self URLWithBaseURLString:URLString];
 }
 
-//- (id)initWithString:(NSString *)URLString
-//{
-//    self = [super initWithString:URLString];
-//    if (self) {
-//        self.baseURL = self;
-//    }
-//
-//    return self;
-//}
+- (id)initWithString:(NSString *)URLString
+{
+    self = [super initWithString:URLString];
+    if (self) {
+        self.internalBaseURL = self;
+    }
+    
+    return self;
+}
 
 @end
