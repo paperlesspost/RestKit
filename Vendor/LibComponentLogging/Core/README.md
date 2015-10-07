@@ -24,15 +24,15 @@ This Git repository contains the library's Core part.
 Download the files of the library Core and a logging back-end, e.g. the
 LogFile logger, from their repositories on GitHub:
 
-* [Library Core](http://github.com/aharren/LibComponentLogging-Core/downloads)
+* [Library Core](http://github.com/aharren/LibComponentLogging-Core)
 
-* [LogFile Logger](http://github.com/aharren/LibComponentLogging-LogFile/downloads)
+* [LogFile Logger](http://github.com/aharren/LibComponentLogging-LogFile)
 
-* [SystemLog Logger](http://github.com/aharren/LibComponentLogging-SystemLog/downloads)
+* [SystemLog Logger](http://github.com/aharren/LibComponentLogging-SystemLog)
 
-* [NSLog Logger](http://github.com/aharren/LibComponentLogging-NSLog/downloads)
+* [NSLog Logger](http://github.com/aharren/LibComponentLogging-NSLog)
 
-* [NSLogger Logger](http://github.com/aharren/LibComponentLogging-NSLogger/downloads)
+* [NSLogger Logger](http://github.com/aharren/LibComponentLogging-NSLogger)
 
 Extract the files and copy the extracted files to your application's source
 directory.
@@ -99,7 +99,7 @@ The following Git repositories are related to this repository:
 
 ## Copyright and License
 
-Copyright (c) 2008-2011 Arne Harren <ah@0xc0.de>
+Copyright (c) 2008-2012 Arne Harren <ah@0xc0.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
