@@ -178,8 +178,6 @@
 		25160ED91456532C0060A5C5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 25160E981456532C0060A5C5 /* LICENSE */; };
 		25160EDA1456532C0060A5C5 /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = 25160E991456532C0060A5C5 /* NOTICE */; };
 		25160EDC1456532C0060A5C5 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25160E9C1456532C0060A5C5 /* CHANGELOG.md */; };
-		25160EDE1456532C0060A5C5 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 25160E9D1456532C0060A5C5 /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25160EE01456532C0060A5C5 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 25160E9E1456532C0060A5C5 /* JSONKit.m */; };
 		25160F081456532C0060A5C5 /* SOCKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 25160EBD1456532C0060A5C5 /* SOCKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25160F091456532C0060A5C5 /* SOCKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 25160EBD1456532C0060A5C5 /* SOCKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25160F0A1456532C0060A5C5 /* SOCKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 25160EBE1456532C0060A5C5 /* SOCKit.m */; };
@@ -2255,7 +2253,6 @@
 				25160ECF1456532C0060A5C5 /* NSData+Base64.h in Headers */,
 				25160ED61456532C0060A5C5 /* FileMD5Hash.h in Headers */,
 				25160ED81456532C0060A5C5 /* FileMD5Hash_Prefix.pch in Headers */,
-				25160EDE1456532C0060A5C5 /* JSONKit.h in Headers */,
 				25160F091456532C0060A5C5 /* SOCKit.h in Headers */,
 				25160F26145655BA0060A5C5 /* Network.h in Headers */,
 				25160F27145655BA0060A5C5 /* NSDictionary+RKRequestSerialization.h in Headers */,
@@ -2868,7 +2865,6 @@
 				25160ECD1456532C0060A5C5 /* GCOAuth.m in Sources */,
 				25160ED11456532C0060A5C5 /* NSData+Base64.m in Sources */,
 				25160ED41456532C0060A5C5 /* FileMD5Hash.c in Sources */,
-				25160EE01456532C0060A5C5 /* JSONKit.m in Sources */,
 				25160F0B1456532C0060A5C5 /* SOCKit.m in Sources */,
 				25160F28145655BA0060A5C5 /* NSDictionary+RKRequestSerialization.m in Sources */,
 				25160F2A145655BA0060A5C5 /* RKClient.m in Sources */,
