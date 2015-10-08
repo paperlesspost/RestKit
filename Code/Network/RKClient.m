@@ -164,9 +164,6 @@ NSString *RKPathAppendQueryParams(NSString *resourcePath, NSDictionary *queryPar
 
         if (sharedClient == nil) {
             [RKClient setSharedClient:self];
-
-            // Initialize Logging as soon as a client is created
-            RKLogInitialize();
         }
     }
 

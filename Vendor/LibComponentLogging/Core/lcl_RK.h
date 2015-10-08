@@ -133,7 +133,7 @@ enum _RKlcl_enum_component_t {
 #   define  _RKlcl_component(_identifier, _header, _name)                        \
     RKlcl_c##_identifier,                                                        \
   __RKlcl_log_symbol_RKlcl_c##_identifier = RKlcl_c##_identifier,
-    RKLCLComponentDefinitions,
+    RKLCLComponentDefinitions
 #   undef   _RKlcl_component
 
    _RKlcl_component_t_count,
