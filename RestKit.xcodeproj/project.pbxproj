@@ -832,9 +832,9 @@
 		5C89319B1BC6DBF9006077A7 /* RKEntityByAttributeCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D98531550C69A008C90F5 /* RKEntityByAttributeCache.m */; settings = {ASSET_TAGS = (); }; };
 		5C89319C1BC6DBF9006077A7 /* RKEntityCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 259D985C155218E4008C90F5 /* RKEntityCache.h */; settings = {ASSET_TAGS = (); }; };
 		5C89319D1BC6DBF9006077A7 /* RKEntityCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D985D155218E4008C90F5 /* RKEntityCache.m */; settings = {ASSET_TAGS = (); }; };
-		5C89319E1BC6DC2C006077A7 /* lcl_config_components_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C25222F1BC6AEE70082E335 /* lcl_config_components_RK.h */; settings = {ASSET_TAGS = (); }; };
-		5C89319F1BC6DC2C006077A7 /* lcl_config_extensions_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C2522301BC6AEE70082E335 /* lcl_config_extensions_RK.h */; settings = {ASSET_TAGS = (); }; };
-		5C8931A01BC6DC2C006077A7 /* lcl_config_logger_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C2522311BC6AEE70082E335 /* lcl_config_logger_RK.h */; settings = {ASSET_TAGS = (); }; };
+		5C89319E1BC6DC2C006077A7 /* lcl_config_components_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C25222F1BC6AEE70082E335 /* lcl_config_components_RK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C89319F1BC6DC2C006077A7 /* lcl_config_extensions_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C2522301BC6AEE70082E335 /* lcl_config_extensions_RK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C8931A01BC6DC2C006077A7 /* lcl_config_logger_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C2522311BC6AEE70082E335 /* lcl_config_logger_RK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C8931A11BC6DC2C006077A7 /* RKBenchmark.h in Headers */ = {isa = PBXBuildFile; fileRef = 25545957155F0527007D7625 /* RKBenchmark.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C8931A21BC6DC2C006077A7 /* RKBenchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 25545958155F0527007D7625 /* RKBenchmark.m */; settings = {ASSET_TAGS = (); }; };
 		5C8931A31BC6DC2C006077A7 /* RKCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 25B6E9F914CF943D00B1E881 /* RKCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -944,7 +944,7 @@
 		5C89320E1BC6DD6D006077A7 /* FileMD5Hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 25160E951456532C0060A5C5 /* FileMD5Hash.c */; settings = {ASSET_TAGS = (); }; };
 		5C89320F1BC6DD6D006077A7 /* FileMD5Hash.h in Headers */ = {isa = PBXBuildFile; fileRef = 25160E961456532C0060A5C5 /* FileMD5Hash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C8932101BC6DD6D006077A7 /* FileMD5Hash_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 25160E971456532C0060A5C5 /* FileMD5Hash_Prefix.pch */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C8932111BC6DD96006077A7 /* lcl_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C25222B1BC6AECD0082E335 /* lcl_RK.h */; settings = {ASSET_TAGS = (); }; };
+		5C8932111BC6DD96006077A7 /* lcl_RK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C25222B1BC6AECD0082E335 /* lcl_RK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C8932121BC6DD96006077A7 /* lcl_RK.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C25222C1BC6AECD0082E335 /* lcl_RK.m */; settings = {ASSET_TAGS = (); }; };
 		5C8932131BC6DDA5006077A7 /* SOCKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 25160EBD1456532C0060A5C5 /* SOCKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C8932141BC6DDAD006077A7 /* SOCKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 25160EBE1456532C0060A5C5 /* SOCKit.m */; settings = {ASSET_TAGS = (); }; };
@@ -3902,7 +3902,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OBJROOT = "$(SRCROOT)/Build";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -3961,7 +3961,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OBJROOT = "$(SRCROOT)/Build";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -4041,6 +4041,7 @@
 				5C8931251BC6CB2A006077A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
