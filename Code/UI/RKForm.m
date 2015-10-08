@@ -27,7 +27,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitUI
+#define RKLogComponent RKlcl_cRestKitUI
 
 @interface RKForm (Private)
 - (void)removeObserverForAttributes;

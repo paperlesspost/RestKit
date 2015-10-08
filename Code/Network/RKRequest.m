@@ -83,7 +83,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitNetwork
+#define RKLogComponent RKlcl_cRestKitNetwork
 
 @interface RKRequest ()
 @property (nonatomic, assign, readwrite, getter = isLoaded) BOOL loaded;

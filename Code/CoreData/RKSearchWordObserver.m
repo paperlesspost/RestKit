@@ -13,7 +13,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitCoreDataSearchEngine
+#define RKLogComponent RKlcl_cRestKitCoreDataSearchEngine
 
 static RKSearchWordObserver *sharedSearchWordObserver = nil;
 

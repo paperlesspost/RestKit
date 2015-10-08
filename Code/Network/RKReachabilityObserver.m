@@ -29,7 +29,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitNetworkReachability
+#define RKLogComponent RKlcl_cRestKitNetworkReachability
 
 @interface RKReachabilityObserver (Private)
 

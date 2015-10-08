@@ -23,7 +23,7 @@
 
 // Define logging component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitUI
+#define RKLogComponent RKlcl_cRestKitUI
 
 /**
  A simple class for wrapping blocks into target/action

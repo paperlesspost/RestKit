@@ -23,7 +23,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitNetworkCache
+#define RKLogComponent RKlcl_cRestKitNetworkCache
 
 NSString * const RKRequestCacheSessionCacheDirectory = @"SessionStore";
 NSString * const RKRequestCachePermanentCacheDirectory = @"PermanentStore";

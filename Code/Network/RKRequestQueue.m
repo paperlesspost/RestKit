@@ -38,7 +38,7 @@ static const NSTimeInterval kFlushDelay = 0.3;
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitNetworkQueue
+#define RKLogComponent RKlcl_cRestKitNetworkQueue
 
 @interface RKRequestQueue ()
 @property (nonatomic, retain, readwrite) NSString *name;

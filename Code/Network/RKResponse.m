@@ -26,7 +26,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitNetwork
+#define RKLogComponent RKlcl_cRestKitNetwork
 
 #define RKResponseIgnoreDelegateIfCancelled(...)                                   \
 if (self.request && [self.request isCancelled]) {                                                  \

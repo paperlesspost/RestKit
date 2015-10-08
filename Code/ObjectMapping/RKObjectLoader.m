@@ -30,7 +30,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitNetwork
+#define RKLogComponent RKlcl_cRestKitNetwork
 
 @interface RKRequest (Private)
 - (void)updateInternalCacheDate;

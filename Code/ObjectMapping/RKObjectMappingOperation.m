@@ -29,7 +29,7 @@
 
 // Set Logging Component
 #undef RKLogComponent
-#define RKLogComponent lcl_cRestKitObjectMapping
+#define RKLogComponent RKlcl_cRestKitObjectMapping
 
 // Temporary home for object equivalancy tests
 BOOL RKObjectIsValueEqualToValue(id sourceValue, id destinationValue);
