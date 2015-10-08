@@ -79,13 +79,9 @@ static RKTestFactory *sharedFactory = nil;
     [self defineFactory:RKTestFactoryDefaultNamesClient withBlock:^id {
         __block RKClient *client;
 
-        RKLogSilenceComponentWhileExecutingBlock(lcl_cRestKitNetworkReachability, ^{
-            RKLogSilenceComponentWhileExecutingBlock(lcl_cRestKitSupport, ^{
-                client = [RKClient clientWithBaseURL:self.baseURL];
-                client.requestQueue.suspended = NO;
-                [client.reachabilityObserver getFlags];
-            });
-        });
+        client = [RKClient clientWithBaseURL:self.baseURL];
+        client.requestQueue.suspended = NO;
+        [client.reachabilityObserver getFlags];
 
         return client;
     }];
@@ -93,16 +89,12 @@ static RKTestFactory *sharedFactory = nil;
     [self defineFactory:RKTestFactoryDefaultNamesObjectManager withBlock:^id {
         __block RKObjectManager *objectManager;
 
-        RKLogSilenceComponentWhileExecutingBlock(lcl_cRestKitNetworkReachability, ^{
-            RKLogSilenceComponentWhileExecutingBlock(lcl_cRestKitSupport, ^{
-                objectManager = [RKObjectManager managerWithBaseURL:self.baseURL];
-                RKObjectMappingProvider *mappingProvider = [self objectFromFactory:RKTestFactoryDefaultNamesMappingProvider];
-                objectManager.mappingProvider = mappingProvider;
-
-                // Force reachability determination
-                [objectManager.client.reachabilityObserver getFlags];
-            });
-        });
+        objectManager = [RKObjectManager managerWithBaseURL:self.baseURL];
+        RKObjectMappingProvider *mappingProvider = [self objectFromFactory:RKTestFactoryDefaultNamesMappingProvider];
+        objectManager.mappingProvider = mappingProvider;
+        
+        // Force reachability determination
+        [objectManager.client.reachabilityObserver getFlags];
 
         return objectManager;
     }];
