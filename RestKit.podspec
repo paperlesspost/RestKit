@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      			=  'RestKit is a framework for consuming and modeling RESTful web resources on iOS and OS X.'
   s.homepage     			=  'http://www.restkit.org'
   s.author       			=  { 'Blake Watters' => 'blakewatters@gmail.com' }
-  s.source       			=  { :git => 'git@github.com:paperlesspost/RestKit.git', :branch => 'feature/ios8_xcode7_dynamicframework_compat'}
+  s.source       			=  { :git => 'https://github.com/PaperlessPost/RestKit.git', :branch => 'feature/ios8_xcode7_dynamicframework_compat'}
   s.license      			=  'Apache License, Version 2.0'
 
   # Platform Setup
