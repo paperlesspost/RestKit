@@ -192,6 +192,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
 
 - (void)cleanupBackgroundTask
 {
+    #ifndef WATCHOS_APP_EXTENSION
     #if TARGET_OS_IPHONE
     BOOL backgroundOK = &UIBackgroundTaskInvalid != NULL;
     if (backgroundOK && UIBackgroundTaskInvalid == self.backgroundTaskIdentifier) {
@@ -203,6 +204,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
             [app endBackgroundTask:_backgroundTaskIdentifier];
             _backgroundTaskIdentifier = UIBackgroundTaskInvalid;
     }
+    #endif
     #endif
 }
 
@@ -495,6 +497,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
         [self performSelector:@selector(didFinishLoad:) withObject:response afterDelay:0];
     } else if ([self shouldDispatchRequest]) {
         [self createTimeoutTimer];
+#ifndef WATCHOS_APP_EXTENSION
 #if TARGET_OS_IPHONE
         // Background Request Policy support
         UIApplication *app = [UIApplication sharedApplication];
@@ -531,6 +534,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
         }
 #else
         [self fireAsynchronousRequest];
+#endif
 #endif
     } else {
         RKLogTrace(@"Declined to dispatch request %@: reachability observer reported the network is not available.", self);

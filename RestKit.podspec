@@ -13,7 +13,18 @@ Pod::Spec.new do |s|
   s.ios.deployment_target	=  "8.0"
   s.requires_arc 			    =  false
 
-  s.source_files 			=  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
+  s.default_subspecs = 'iOS'  
+
+  s.subspec 'iOS' do |ss|
+    ss.source_files =  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
+  end
+
+  s.subspec 'AppExtension' do |ss| 
+    ss.source_files =  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
+    ss.pod_target_xcconfig = {
+        "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) WATCHOS_APP_EXTENSION"
+    }
+  end
 
 end
 

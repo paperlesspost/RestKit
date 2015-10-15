@@ -19,6 +19,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  * Presents an alert dialog with the specified message
@@ -26,6 +27,12 @@
 void RKAlert(NSString *message);
 
 /**
- * Presents an alert dialog with the specified message and title
+ * Presents an alert dialog with the specified message and
  */
-void RKAlertWithTitle(NSString *message, NSString *title);
+void RKAlertWithTitle(NSString *message, NSString *title) DEPRECATED_ATTRIBUTE;
+
+/**
+ * Presents an alert dialog with the specified message, title and presenting controller
+ */
+void RKAlertWithTitleAndController(NSString *message, NSString *title, UIViewController *presentingController);
+

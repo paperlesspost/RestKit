@@ -422,7 +422,12 @@ NSString *RKPathAppendQueryParams(NSString *resourcePath, NSDictionary *queryPar
 - (void)serviceDidBecomeUnavailableNotification:(NSNotification *)notification
 {
     if (self.serviceUnavailableAlertEnabled) {
-        RKAlertWithTitle(self.serviceUnavailableAlertMessage, self.serviceUnavailableAlertTitle);
+        
+        UIViewController *notificationSender = (UIViewController*) notification.object;
+        if (!notificationSender) {
+            notificationSender = nil;
+        }
+        RKAlertWithTitleAndController(self.serviceUnavailableAlertMessage, self.serviceUnavailableAlertTitle, notificationSender);
     }
 }
 

@@ -217,11 +217,12 @@ static const NSTimeInterval kFlushDelay = 0.3;
         if ([_delegate respondsToSelector:@selector(requestQueueDidBeginLoading:)]) {
             [_delegate requestQueueDidBeginLoading:self];
         }
-
+#ifndef WATCHOS_APP_EXTENSION
 #if TARGET_OS_IPHONE
         if (self.showsNetworkActivityIndicatorWhenBusy) {
             [[UIApplication sharedApplication] pushNetworkActivity];
         }
+#endif
 #endif
     }
     @synchronized(self) {
@@ -239,11 +240,12 @@ static const NSTimeInterval kFlushDelay = 0.3;
         if ([_delegate respondsToSelector:@selector(requestQueueDidFinishLoading:)]) {
             [_delegate requestQueueDidFinishLoading:self];
         }
-
+#ifndef WATCHOS_APP_EXTENSION
 #if TARGET_OS_IPHONE
         if (self.showsNetworkActivityIndicatorWhenBusy) {
             [[UIApplication sharedApplication] popNetworkActivity];
         }
+#endif
 #endif
     }
     @synchronized(self) {

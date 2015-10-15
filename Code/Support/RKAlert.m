@@ -28,18 +28,24 @@
 #import "RKLog.h"
 
 void RKAlert(NSString *message) {
-    RKAlertWithTitle(message, @"Alert");
+    RKAlertWithTitleAndController(message, @"Alert", nil);
 }
 
 void RKAlertWithTitle(NSString *message, NSString *title) {
+    RKAlertWithTitleAndController(message, title, nil);
+}
+
+void RKAlertWithTitleAndController(NSString *message, NSString *title, UIViewController *presentingController) {    
 #if TARGET_OS_IPHONE
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    if (presentingController) {
+        [presentingController presentViewController:alert animated:YES completion:nil];
+    } else {
+        RKLogCritical(@"%@: %@", title, message);
+    }
+    [alert release];
 #elif TARGET_OS_MAC
     Class alertClass = NSClassFromString(@"NSAlert");
     if (alertClass) {
