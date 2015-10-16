@@ -129,7 +129,7 @@ return __VA_ARGS__;                                                             
         returnCode = SecTrustEvaluate(trust, &result);
 
         if (returnCode == errSecSuccess) {
-            proceed = (result == kSecTrustResultProceed || result == kSecTrustResultConfirm || result == kSecTrustResultUnspecified);
+            proceed = (result == kSecTrustResultProceed || result == kSecTrustResultUnspecified);
             if (result == kSecTrustResultRecoverableTrustFailure) {
                 // TODO: should try to recover here
                 // call SecTrustGetCssmResult() for more information about the failure
@@ -209,7 +209,7 @@ return __VA_ARGS__;                                                             
     [_body appendData:data];
     [_request invalidateTimeoutTimer];
     if ([[_request delegate] respondsToSelector:@selector(request:didReceiveData:totalBytesReceived:totalBytesExpectedToReceive:)]) {
-        [[_request delegate] request:_request didReceiveData:[data length] totalBytesReceived:[_body length] totalBytesExpectedToReceive:_httpURLResponse.expectedContentLength];
+        [[_request delegate] request:_request didReceiveData:[data length] totalBytesReceived:[_body length] totalBytesExpectedToReceive:(int)(_httpURLResponse.expectedContentLength)];
     }
 }
 
@@ -297,7 +297,7 @@ return __VA_ARGS__;                                                             
 
 - (id)bodyAsJSON
 {
-    [NSException raise:nil format:@"Reimplemented as parsedBody"];
+    [NSException raise:@"" format:@"Reimplemented as parsedBody"];
     return nil;
 }
 

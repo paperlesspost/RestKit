@@ -30,6 +30,8 @@
     NSMutableDictionary *_mutableDictionary;
 }
 
+- (instancetype)initWithCapacity:(NSUInteger)numItems NS_DESIGNATED_INITIALIZER;
+
 /**
  Assigns a block as the value for a key in the dictionary. This allows you
  to implement simple logic using key-value coding semantics within the dictionary.

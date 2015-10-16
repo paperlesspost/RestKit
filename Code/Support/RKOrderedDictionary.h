@@ -35,6 +35,8 @@
     NSMutableArray *array;
 }
 
+- (id)initWithCapacity:(NSUInteger)numItems NS_DESIGNATED_INITIALIZER;
+
 /**
  Inserts an object into the dictionary for a given key at a specific index.
 

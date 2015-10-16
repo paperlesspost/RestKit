@@ -49,7 +49,7 @@
 
     NSMutableDictionary *classRoutes = [_routes objectForKey:className];
     if ([classRoutes objectForKey:methodName]) {
-    [NSException raise:nil format:@"A route has already been registered for class '%@' and HTTP method '%@'", className, methodName];
+    [NSException raise:@"" format:@"A route has already been registered for class '%@' and HTTP method '%@'", className, methodName];
     }
 
     NSMutableDictionary *routeEntry = [NSMutableDictionary dictionaryWithObjectsAndKeys:

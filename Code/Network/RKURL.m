@@ -92,7 +92,7 @@
     
     self = [self initWithString:[completeURL absoluteString]];
     if (self) {
-        self.internalBaseURL = theBaseURL;
+        self.internalBaseURL = [theBaseURL absoluteString];
         self.resourcePath = theResourcePath;
     }
     
@@ -100,11 +100,11 @@
 }
 
 - (NSURL *)baseURL {
-    return self.internalBaseURL;
+    return [NSURL URLWithString:self.internalBaseURL];
 }
 
 - (void)setBaseURL:(NSURL *)baseURL {
-    self.internalBaseURL = baseURL;
+    self.internalBaseURL = [baseURL absoluteString];
 }
 
 - (void)dealloc
@@ -140,7 +140,7 @@
 
 - (RKURL *)URLByReplacingResourcePath:(NSString *)newResourcePath
 {
-    return [RKURL URLWithBaseURL:self.internalBaseURL resourcePath:newResourcePath];
+    return [RKURL URLWithBaseURL:[NSURL URLWithString:self.internalBaseURL] resourcePath:newResourcePath];
 }
 
 - (RKURL *)URLByInterpolatingResourcePathWithObject:(id)object
@@ -164,7 +164,7 @@
 {
     self = [super initWithString:URLString];
     if (self) {
-        self.internalBaseURL = self;
+        self.internalBaseURL = URLString;
     }
     
     return self;

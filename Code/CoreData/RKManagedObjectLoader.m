@@ -175,10 +175,12 @@
         BOOL success = [self.objectStore save:&error];
         if (! success) {
             RKLogError(@"Failed to save managed object context after mapping completed: %@", [error localizedDescription]);
-            NSMethodSignature *signature = [(NSObject *)self methodSignatureForSelector:@selector(informDelegateOfError:)];
+            
+            SEL sel = NSSelectorFromString(@"informDelegateOfError:");
+            NSMethodSignature *signature = [(NSObject *)self methodSignatureForSelector:sel];
             RKManagedObjectThreadSafeInvocation *invocation = [RKManagedObjectThreadSafeInvocation invocationWithMethodSignature:signature];
             [invocation setTarget:self];
-            [invocation setSelector:@selector(informDelegateOfError:)];
+            [invocation setSelector:sel];
             [invocation setArgument:&error atIndex:2];
             [invocation invokeOnMainThread];
 

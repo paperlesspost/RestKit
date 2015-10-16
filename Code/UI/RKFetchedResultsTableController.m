@@ -396,14 +396,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView
 {
     NSAssert(theTableView == self.tableView, @"numberOfSectionsInTableView: invoked with inappropriate tableView: %@", theTableView);
-    RKLogTrace(@"numberOfSectionsInTableView: %d (%@)", [[_fetchedResultsController sections] count], [[_fetchedResultsController sections] valueForKey:@"name"]);
+    RKLogTrace(@"numberOfSectionsInTableView: %lu (%@)", (unsigned long)[[_fetchedResultsController sections] count], [[_fetchedResultsController sections] valueForKey:@"name"]);
     return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
 {
     NSAssert(theTableView == self.tableView, @"tableView:numberOfRowsInSection: invoked with inappropriate tableView: %@", theTableView);
-    RKLogTrace(@"%@ numberOfRowsInSection:%d = %d", self, section, self.sectionCount);
+    RKLogTrace(@"%@ numberOfRowsInSection:%ld = %lu", self, (long)section, (unsigned long)self.sectionCount);
     id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     NSUInteger numberOfRows = [sectionInfo numberOfObjects];
 
@@ -563,7 +563,7 @@
 {
     NSUInteger fetchedObjectsCount = [[_fetchedResultsController fetchedObjects] count];
     BOOL isEmpty = (fetchedObjectsCount == 0);
-    RKLogTrace(@"Determined isEmpty = %@. fetchedObjects count = %d", isEmpty ? @"YES" : @"NO", fetchedObjectsCount);
+    RKLogTrace(@"Determined isEmpty = %@. fetchedObjects count = %lu", isEmpty ? @"YES" : @"NO", (unsigned long)fetchedObjectsCount);
     return isEmpty;
 }
 
@@ -571,7 +571,7 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    RKLogTrace(@"Beginning updates for fetchedResultsController (%@). Current section count = %d (resource path: %@)", controller, [[controller sections] count], _resourcePath);
+    RKLogTrace(@"Beginning updates for fetchedResultsController (%@). Current section count = %lu (resource path: %@)", controller, (unsigned long)[[controller sections] count], _resourcePath);
 
     if (_sortSelector) return;
 
@@ -607,7 +607,7 @@
             break;
 
         default:
-            RKLogTrace(@"Encountered unexpected section changeType: %d", type);
+            RKLogTrace(@"Encountered unexpected section changeType: %lu", (unsigned long)type);
             break;
     }
 }
@@ -651,15 +651,15 @@
             break;
 
         default:
-            RKLogTrace(@"Encountered unexpected object changeType: %d", type);
+            RKLogTrace(@"Encountered unexpected object changeType: %lu", (unsigned long)type);
             break;
     }
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    RKLogTrace(@"Ending updates for fetchedResultsController (%@). New section count = %d (resource path: %@)",
-               controller, [[controller sections] count], _resourcePath);
+    RKLogTrace(@"Ending updates for fetchedResultsController (%@). New section count = %lu (resource path: %@)",
+               controller, (unsigned long)[[controller sections] count], _resourcePath);
     if (self.emptyItem && ![self isEmpty] && _isEmptyBeforeAnimation) {
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self emptyItemIndexPath]]
                               withRowAnimation:UITableViewRowAnimationFade];

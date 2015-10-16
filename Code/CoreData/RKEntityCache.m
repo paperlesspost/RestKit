@@ -86,7 +86,7 @@
         return [attributeCache objectsWithAttributeValue:attributeValue];
     }
 
-    return [NSSet set];
+    return [NSArray array];
 }
 
 - (RKEntityByAttributeCache *)attributeCacheForEntity:(NSEntityDescription *)entity attribute:(NSString *)attributeName

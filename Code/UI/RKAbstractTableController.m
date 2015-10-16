@@ -522,7 +522,7 @@ static NSString *lastUpdatedDateDictionaryKey = @"lastUpdatedDateDictionaryKey";
 
     // Informal protocol
     // TODO: Needs documentation!!!
-    SEL willDisplaySelector = @selector(willDisplayInTableViewCell:);
+    SEL willDisplaySelector = NSSelectorFromString(@"willDisplayInTableViewCell:");
     if ([mappableObject respondsToSelector:willDisplaySelector]) {
         [mappableObject performSelector:willDisplaySelector withObject:cell];
     }

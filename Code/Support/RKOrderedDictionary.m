@@ -64,6 +64,12 @@ NSString *RKDescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [self initWithCapacity:0];
+    return self;
+}
+
 - (void)dealloc
 {
     [dictionary release];

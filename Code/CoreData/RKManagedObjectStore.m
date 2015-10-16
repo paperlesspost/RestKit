@@ -125,7 +125,7 @@ static RKManagedObjectStore *defaultObjectStore = nil;
             [RKDirectory ensureDirectoryExistsAtPath:nilOrDirectoryPath error:nil];
         } else {
             // If path given, caller is responsible for directory's existence
-            BOOL isDir;
+            __unused BOOL isDir;
             NSAssert1([[NSFileManager defaultManager] fileExistsAtPath:nilOrDirectoryPath isDirectory:&isDir] && isDir == YES, @"Specified storage directory exists", nilOrDirectoryPath);
         }
         _pathToStoreFile = [[nilOrDirectoryPath stringByAppendingPathComponent:_storeFilename] retain];

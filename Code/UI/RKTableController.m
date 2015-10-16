@@ -493,14 +493,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView
 {
     NSAssert(theTableView == self.tableView, @"numberOfSectionsInTableView: invoked with inappropriate tableView: %@", theTableView);
-    RKLogTrace(@"%@ numberOfSectionsInTableView = %d", self, self.sectionCount);
+    RKLogTrace(@"%@ numberOfSectionsInTableView = %lu", self, (unsigned long)self.sectionCount);
     return self.sectionCount;
 }
 
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
 {
     NSAssert(theTableView == self.tableView, @"tableView:numberOfRowsInSection: invoked with inappropriate tableView: %@", theTableView);
-    RKLogTrace(@"%@ numberOfRowsInSection:%d = %d", self, section, self.sectionCount);
+    RKLogTrace(@"%@ numberOfRowsInSection:%ld = %lu", self, (long)section, (unsigned long)self.sectionCount);
     return [[_sections objectAtIndex:section] rowCount];
 }
 
@@ -555,7 +555,7 @@
     NSUInteger nonRowItemsCount = [self.headerItems count] + [self.footerItems count];
     nonRowItemsCount += self.emptyItem ? 1 : 0;
     BOOL isEmpty = (self.rowCount - nonRowItemsCount) == 0;
-    RKLogTrace(@"Determined isConsideredEmpty = %@. self.rowCount = %d with %d nonRowItems in the table", isEmpty ? @"YES" : @"NO", self.rowCount, nonRowItemsCount);
+    RKLogTrace(@"Determined isConsideredEmpty = %@. self.rowCount = %lu with %lu nonRowItems in the table", isEmpty ? @"YES" : @"NO", (unsigned long)self.rowCount, (unsigned long)nonRowItemsCount);
     return isEmpty;
 }
 

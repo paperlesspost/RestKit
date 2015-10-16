@@ -201,7 +201,7 @@
 
 - (void)assertStorageForContext:(RKObjectMappingProviderContext)context isKindOfClass:(Class)theClass
 {
-    id contextValue = [self valueForContext:context];
+    __unused id contextValue = [self valueForContext:context];
     NSAssert([contextValue isKindOfClass:theClass], @"Storage type mismatch for context %d: expected a %@, got %@.", context, theClass, [contextValue class]);
 }
 
@@ -213,9 +213,9 @@
 
 - (RKObjectMappingDefinition *)mappingForContext:(RKObjectMappingProviderContext)context
 {
-    id contextValue = [self valueForContext:context];
+    __unused id contextValue = [self valueForContext:context];
     if ([contextValue isEqual:[NSNull null]]) return nil;
-    Class class = [RKObjectMappingDefinition class];
+    __unused Class class = [RKObjectMappingDefinition class];
     NSAssert([contextValue isKindOfClass:class], @"Storage type mismatch for context %d: expected a %@, got %@.", context, class, [contextValue class]);
     return contextValue;
 }
