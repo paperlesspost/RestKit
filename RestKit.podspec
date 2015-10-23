@@ -15,6 +15,8 @@ Pod::Spec.new do |s|
 
   s.source_files =  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
 
+  s.dependency 'NSData+Base64', '~> 1.0'
+
   s.subspec 'AppExtension' do |ss|
     ss.source_files = "Code/DummyHeader.{h,m}" 
     ss.pod_target_xcconfig = {
