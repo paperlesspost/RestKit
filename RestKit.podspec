@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name         			=  'RestKit'
-  s.version      			=  '0.10.31-alpha.4'
+  s.version      			=  '0.10.31'
   s.summary      			=  'RestKit is a framework for consuming and modeling RESTful web resources on iOS and OS X.'
-  s.homepage     			=  'http://www.restkit.org'
+  s.homepage     			=  'https://github.com/RestKit/RestKit'
   s.author       			=  { 'Blake Watters' => 'blakewatters@gmail.com' }
   s.source       			=  { :git => 'https://github.com/PaperlessPost/RestKit.git', :tag => s.version.to_s}
   s.license      			=  'Apache License, Version 2.0'
