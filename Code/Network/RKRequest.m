@@ -188,7 +188,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
 
 - (void)cleanupBackgroundTask
 {
-    #ifndef WATCHOS_APP_EXTENSION
+    #ifndef RK_APP_EXTENSION
     #if TARGET_OS_IPHONE
     if (UIBackgroundTaskInvalid == self.backgroundTaskIdentifier) {
         return;
@@ -492,7 +492,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
         [self performSelector:@selector(didFinishLoad:) withObject:response afterDelay:0];
     } else if ([self shouldDispatchRequest]) {
         [self createTimeoutTimer];
-#ifndef WATCHOS_APP_EXTENSION
+#ifndef RK_APP_EXTENSION
 #if TARGET_OS_IPHONE
         // Background Request Policy support
         UIApplication *app = [UIApplication sharedApplication];
