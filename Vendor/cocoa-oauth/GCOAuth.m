@@ -35,7 +35,7 @@
 
 #import <CommonCrypto/CommonHMAC.h>
 
-#import "NSData+Base64.h"
+#import <NSData_Base64/NSData+Base64.h>
 
 // static variables
 static NSString *GCOAuthUserAgent = nil;
