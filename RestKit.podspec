@@ -8,14 +8,11 @@ Pod::Spec.new do |s|
   s.license      			=  'Apache License, Version 2.0'
   s.platform 	 			  =  :ios
   s.requires_arc 			=  false
-  s.default_subspec   = 'iOS'
 
-  s.subspec 'iOS' do |ss|    
-    ss.source_files =  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
-  end
+  s.source_files =  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
 
   s.subspec 'AppExtension' do |ss|    
-    ss.source_files =  "Code/**/*.{h,m}", "Vendor/SOCKit", "Vendor/FileMD5Hash", "Vendor/LibComponentLogging/**/*.{h,m}", "Vendor/XMLReader/**/*.{h,m}", "Vendor/cocoa-oauth/**/*.{h,m}", "Vendor/iso8601parser/**/*.{h,m}"
+    ss.source_files = 'Code/DummyHeader.{h,m}'
     ss.pod_target_xcconfig = { "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) RK_APP_EXTENSION" }
   end
 
